@@ -141,3 +141,27 @@ SELECT p.peak_name
 FROM geography.peaks AS p
 ORDER BY p.peak_name ASC;
 
+-- Find the 30 biggest countries by population from Europe. Display the country name and population.
+-- Sort the results by population (from biggest to smallest), then by country alphabetically.
+SELECT *
+FROM geography.continents;
+
+SELECT *
+FROM geography.countries;
+
+SELECT c.country_name, c.population
+FROM geography.countries AS c
+WHERE c.continent_code = 'EU'
+ORDER BY c.population DESC
+LIMIT 30;
+
+
+-- Find all countries along with information about their currency. Display the country code, country name and information
+-- about its currency: either "Euro" or "Not Euro". Sort the results by country name alphabetically. 
+SELECT c.country_name, c.country_code,
+		CASE 
+		WHEN c.currency_code  = 'EUR' THEN 'Euro'
+		WHEN c.currency_code IS NULL THEN 'No currency code available'
+		ELSE 'Non Euro'
+		END AS currency
+FROM geography.countries AS c;
