@@ -19,11 +19,14 @@ USE test;
 SET @@auto_increment_increment=1;
 SET @@auto_increment_offset=1;
 
+-- in order to have a one-to-one relation we need to have the row passport_id as Unique key
+
 CREATE TABLE persons(
 person_id INT NOT NULL,
 first_name VARCHAR(50) NOT NULL,
 salary FLOAT NOT NULL,
-passport_id INT
+passport_id INT,
+UNIQUE KEY uk_passport_id(passport_id)
 );
 
 CREATE TABLE passports(
