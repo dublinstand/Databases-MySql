@@ -8,11 +8,12 @@
 
 USE soft_uni;
 
-SELECT e.employee_id, e.job_title, e.address_id, a.address_text
-FROM employees AS e 
-INNER JOIN addresses AS a
-ON e.address_id = a.address_id
-ORDER BY e.address_id
+SELECT e.employee_id, e.first_name, e.salary, d.name
+FROM employees AS e
+INNER JOIN departments AS d
+ON e.department_id = d.department_id
+WHERE e.salary > 15000 
+ORDER BY e.department_id
 LIMIT 5;
 
 
@@ -20,4 +21,4 @@ SELECT *
 FROM employees;
 
 select * 
-FROM addresses;
+FROM departments;
