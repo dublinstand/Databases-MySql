@@ -62,3 +62,16 @@ WHERE t.name = 'Sofia';
 SELECT *
 FROM addresses AS a
 WHERE a.town_id = 32;
+
+SELECT *
+FROM employees AS e
+WHERE e.first_name LIKE 'SA%';
+
+SELECT DISTINCT d.name, MAX(e.salary) AS max_salary
+FROM employees AS e
+JOIN departments AS d
+	ON e.department_id = d.department_id
+GROUP BY e.department_id
+HAVING MAX(e.salary) NOT BETWEEN 30000 and 70000
+ORDER BY max_salary;
+
